@@ -8,13 +8,37 @@ o Arduino é feita via **Web Serial API** (USB).
 
 ## Demonstração
 
-[`demo.mp4`](./demo.mp4) — vídeo mostrando a mão robótica reconhecendo os
-gestos e reagindo em tempo real.
+<video src="./demo.mp4" controls width="600">
+  Seu navegador não suporta vídeo embutido — baixe em
+  <a href="./demo.mp4">demo.mp4</a>.
+</video>
 
-> Dica: depois de dar push, ao invés de só linkar o arquivo, você pode
-> arrastar o `demo.mp4` direto para a caixa de edição do README no site do
-> GitHub — ele faz upload e gera um player de vídeo embutido automaticamente
-> no lugar deste link.
+Vídeo mostrando a mão robótica reconhecendo os gestos (pedra, papel ou
+tesoura) e reagindo em tempo real. Se o player acima não carregar na
+visualização do GitHub, baixe/abra direto pelo link
+[`demo.mp4`](./demo.mp4).
+
+## Acessar a página (GitHub Pages)
+
+A página é 100% estática. Link direto para os arquivos de `web/`:
+
+**https://fernando0da0costa.github.io/m-o-robotica-Joquemp-com-inteligencia-artificial-/web/**
+
+Abra esse link em **Chrome, Edge ou Opera** no computador conectado ao
+Arduino por USB — HTTPS satisfaz o contexto seguro exigido pela câmera e
+pela Web Serial API.
+
+> ⚠️ **Se o link acima (raiz do site, sem `/web/`) mostrar este README em vez
+> do app**, é porque o GitHub Pages ainda está publicando pelo modo antigo
+> ("Deploy from a branch", que gera o site a partir do Jekyll usando todo o
+> repositório) em vez de usar o workflow `deploy-pages.yml`, que publica só
+> a pasta `web/` na raiz. Para corrigir de vez:
+> 1. No repositório: **Settings → Pages → Build and deployment → Source**.
+> 2. Trocar de "Deploy from a branch" para **"GitHub Actions"**.
+> 3. Rodar o workflow uma vez em **Actions → "Deploy web/ to GitHub Pages" →
+>    Run workflow** (ou dar qualquer push em `web/`).
+> 4. Depois disso, o link raiz (sem `/web/`) passa a abrir o app
+>    diretamente.
 
 ## Como funciona
 
