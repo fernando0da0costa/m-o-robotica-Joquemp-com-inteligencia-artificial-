@@ -22,7 +22,7 @@ visualização do GitHub, baixe/abra direto pelo link
 
 A página é 100% estática e fica na pasta `docs/`:
 
-**https://fernando0da0costa.github.io/m-o-robotica-Joquemp-com-inteligencia-artificial-/**
+**https://fernando0da0costa.github.io/m-o-robotica-Joquemp-com-inteligencia-artificial-/web**
 
 Abra esse link em **Chrome, Edge ou Opera** no computador conectado ao
 Arduino por USB — HTTPS satisfaz o contexto seguro exigido pela câmera e
@@ -31,9 +31,9 @@ pela Web Serial API.
 > ⚠️ **Se esse link mostrar este README em vez do app**, é porque o GitHub
 > Pages ainda não está configurado para publicar a pasta `docs/`. Corrija
 > em: **Settings → Pages → Build and deployment → Source → "Deploy from a
-> branch"**, e logo abaixo escolha **Branch: `main`** e **Folder: `/docs`**
+> branch"**, e logo abaixo escolha **Branch: `main`** e **Folder: `/web`**
 > (essas são as únicas duas opções que o GitHub oferece nesse modo — raiz do
-> repo ou `/docs` — por isso o projeto usa `docs/` em vez de `web/`). Salve;
+> repo ou `/web` — por isso o projeto usa `docs/` em vez de `web/`). Salve;
 > em 1–2 minutos o link acima passa a abrir o app.
 
 ## Como funciona
@@ -117,7 +117,7 @@ logs: `docker compose logs -f`.
 **Opção B — servidor Python (sem Docker):**
 
 ```bash
-cd rps_hand/docs
+cd rps_hand/web
 python3 -m http.server 8080
 ```
 
@@ -146,14 +146,14 @@ reproduz o gesto, sempre passando pela posição zero entre um gesto e outro.
 
 O site estático mora em `docs/` (com um `.nojekyll` para o GitHub não tentar
 processar os arquivos com Jekyll). O modo "Deploy from a branch" do GitHub
-Pages só aceita publicar a raiz do repositório **ou** uma pasta `/docs` —
+Pages só aceita publicar a raiz do repositório **ou** uma pasta `/web` —
 por isso o projeto usa `docs/` em vez de `web/`.
 
 Passos (uma vez só):
 1. Dar push deste projeto para a branch `main`.
 2. No repositório: **Settings → Pages → Build and deployment → Source →
    "Deploy from a branch"**.
-3. Em **Branch**, escolher `main` e a pasta **`/docs`**, depois **Save**.
+3. Em **Branch**, escolher `main` e a pasta **`/web`**, depois **Save**.
 
 Em 1–2 minutos o site sobe em
 `https://fernando0da0costa.github.io/m-o-robotica-Joquemp-com-inteligencia-artificial-/`.
