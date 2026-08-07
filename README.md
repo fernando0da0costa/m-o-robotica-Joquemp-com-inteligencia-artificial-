@@ -20,25 +20,21 @@ visualização do GitHub, baixe/abra direto pelo link
 
 ## Acessar a página (GitHub Pages)
 
-A página é 100% estática. Link direto para os arquivos de `web/`:
+A página é 100% estática e fica na pasta `docs/`:
 
-**https://fernando0da0costa.github.io/m-o-robotica-Joquemp-com-inteligencia-artificial-/web/**
+**https://fernando0da0costa.github.io/m-o-robotica-Joquemp-com-inteligencia-artificial-/**
 
 Abra esse link em **Chrome, Edge ou Opera** no computador conectado ao
 Arduino por USB — HTTPS satisfaz o contexto seguro exigido pela câmera e
 pela Web Serial API.
 
-> ⚠️ **Se o link acima (raiz do site, sem `/web/`) mostrar este README em vez
-> do app**, é porque o GitHub Pages ainda está publicando pelo modo antigo
-> ("Deploy from a branch", que gera o site a partir do Jekyll usando todo o
-> repositório) em vez de usar o workflow `deploy-pages.yml`, que publica só
-> a pasta `web/` na raiz. Para corrigir de vez:
-> 1. No repositório: **Settings → Pages → Build and deployment → Source**.
-> 2. Trocar de "Deploy from a branch" para **"GitHub Actions"**.
-> 3. Rodar o workflow uma vez em **Actions → "Deploy web/ to GitHub Pages" →
->    Run workflow** (ou dar qualquer push em `web/`).
-> 4. Depois disso, o link raiz (sem `/web/`) passa a abrir o app
->    diretamente.
+> ⚠️ **Se esse link mostrar este README em vez do app**, é porque o GitHub
+> Pages ainda não está configurado para publicar a pasta `docs/`. Corrija
+> em: **Settings → Pages → Build and deployment → Source → "Deploy from a
+> branch"**, e logo abaixo escolha **Branch: `main`** e **Folder: `/docs`**
+> (essas são as únicas duas opções que o GitHub oferece nesse modo — raiz do
+> repo ou `/docs` — por isso o projeto usa `docs/` em vez de `web/`). Salve;
+> em 1–2 minutos o link acima passa a abrir o app.
 
 ## Como funciona
 
@@ -121,7 +117,7 @@ logs: `docker compose logs -f`.
 **Opção B — servidor Python (sem Docker):**
 
 ```bash
-cd rps_hand/web
+cd rps_hand/docs
 python3 -m http.server 8080
 ```
 
@@ -148,16 +144,19 @@ reproduz o gesto, sempre passando pela posição zero entre um gesto e outro.
 
 ## Publicar no GitHub Pages
 
-O workflow `.github/workflows/deploy-pages.yml` já está pronto: a cada push
-na branch `main` que altere algo em `web/`, ele publica o conteúdo de
-`web/` automaticamente no GitHub Pages.
+O site estático mora em `docs/` (com um `.nojekyll` para o GitHub não tentar
+processar os arquivos com Jekyll). O modo "Deploy from a branch" do GitHub
+Pages só aceita publicar a raiz do repositório **ou** uma pasta `/docs` —
+por isso o projeto usa `docs/` em vez de `web/`.
 
 Passos (uma vez só):
 1. Dar push deste projeto para a branch `main`.
-2. No repositório: **Settings → Pages → Source → "GitHub Actions"**.
-3. Fazer um push (ou rodar o workflow manualmente em Actions → "Deploy
-   web/ to GitHub Pages" → Run workflow).
+2. No repositório: **Settings → Pages → Build and deployment → Source →
+   "Deploy from a branch"**.
+3. Em **Branch**, escolher `main` e a pasta **`/docs`**, depois **Save**.
 
+Em 1–2 minutos o site sobe em
+`https://fernando0da0costa.github.io/m-o-robotica-Joquemp-com-inteligencia-artificial-/`.
 GitHub Pages serve tudo via HTTPS, então câmera e Web Serial funcionam
 normalmente — a única exigência é abrir a página em Chrome/Edge no
 computador com o Arduino ligado na USB.
@@ -170,12 +169,11 @@ rps_hand/
 ├── PLANEJAMENTO.md                  # detalhes técnicos completos
 ├── demo.mp4                         # vídeo de demonstração
 ├── docker-compose.yml               # sobe o nginx local (porta 8081)
-├── .github/workflows/
-│   └── deploy-pages.yml             # publica web/ no GitHub Pages a cada push em main
 ├── firmware/
 │   ├── rps_hand_firmware_180/       # firmware para servos posicionais (180°)
 │   └── rps_hand_firmware_360/       # firmware para servos de rotação contínua (360°)
-└── web/
+└── docs/                            # site estático, também servido pelo GitHub Pages
+    ├── .nojekyll                    # evita que o GitHub Pages processe os arquivos com Jekyll
     ├── index.html                   # UI + conexão + calibração
     ├── style.css
     ├── app.js                       # câmera, MediaPipe, classificador, Web Serial
